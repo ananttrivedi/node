@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var app = express();
+
 
 var todoItems = [
 		{id: 23, desc: 'foo'},
@@ -15,8 +17,17 @@ var todoItems = [
 
 // routes
 router.get('/', function (req, res){
+	console.log(app);
 	res.render('index', {
 		title: "My App Anant",
+		items: todoItems
+	});
+});
+
+//mongodb://<user>:<pass>@novus.modulusmongo.net:27017/re8siWix connected with github
+router.get('/todo', function (req, res){
+	res.render('todo', {
+		title: "Anants Todos",
 		items: todoItems
 	});
 });
